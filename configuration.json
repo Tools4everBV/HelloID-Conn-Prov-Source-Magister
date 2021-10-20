@@ -1,0 +1,40 @@
+[
+  {
+    "key": "user",
+    "type": "input",
+    "defaultValue": "",
+    "templateOptions": {
+      "label": "Username",
+      "required": true
+    }
+  },
+  {
+    "key": "pass",
+    "type": "input",
+    "defaultValue": "",
+    "templateOptions": {
+      "label": "Password",
+      "required": true
+    }
+  },
+  {
+    "key": "tenant",
+    "type": "input",
+    "defaultValue": "",
+    "templateOptions": {
+      "label": "Tenant",
+      "description": "Name of the SWP url: https://<tenant>.swp.nl",
+      "required": true
+    }
+  },
+  {
+    "key": "layout",
+    "type": "input",
+    "defaultValue": "",
+    "templateOptions": {
+      "label": "Layout",
+      "description": "Name of the list in Decibel to export",
+      "required": true
+    }
+  }
+]

@@ -1,0 +1,123 @@
+SELECT DISTINCT
+sis_leer.stamnr as STAMNR,
+sis_leer.voorlett as INITIALS,
+sis_leer.roepnaam as FIRSTNAME,
+sis_leer.tussenvoeg as PREFIX,
+sis_leer.achternaam as LASTNAME,
+sis_leer.email as EMAIL,
+sis_leer.geslacht as GENDER,
+sis_leer.geb_datum as BIRTHDATE,
+sis_leer.straat as STREET,
+sis_leer.huisnr as HOUSENR,
+sis_leer.huisnr_tv as HOUSENRSUFIX,
+sis_leer.postcode as POSTALCODE,
+sis_leer.woonplaats as CITY,
+sis_blpe.omschr_k as STUDYPERIOD,
+sis_bgrp.groep as CLASS,
+sis_prof.c_profiel as PROFILECODE,
+sis_prof.omschr as PROFILEDESC,
+sis_stud.studie as STUDY,
+sis_blok.omschr as LOCATION,
+sis_blfa.leerjaar as STUDYYEAR,
+sis_pers.doc_code as PMENTORCODE,
+sis_pers.naam_vol as PMENTORNAME,
+sis_pers0.doc_code as CMENTORCODE,
+sis_pers0.naam_vol as CMENTORNAME,
+sis_pers1.doc_code as ADJUNCSECTOR,
+sis_aanm.datumaanm as Aanmelddatum,
+sis_gebr.login_naam as sis_gebr__login_naam,
+'Huidig' AS Schooljaar,
+O.email,
+sis_leer.gsm
+FROM sis_leer sis_leer
+INNER JOIN sis_aanm sis_aanm on sis_leer.stamnr=sis_aanm.stamnr
+LEFT JOIN sis_bgrp sis_bgrp on sis_aanm.idBgrp=sis_bgrp.idBgrp
+LEFT JOIN sis_prof sis_prof on sis_aanm.c_profiel=sis_prof.c_profiel AND sis_aanm.idStud=sis_prof.idStud
+LEFT JOIN sis_allp sis_allp on sis_aanm.stamnr=sis_allp.stamnr AND sis_aanm.lesperiode=sis_allp.lesperiode
+LEFT JOIN sis_blpe sis_blpe on sis_allp.lesperiode=sis_blpe.lesperiode
+LEFT JOIN sis_bnat sis_bnat on sis_leer.woonland=sis_bnat.idBnat
+LEFT JOIN sis_pgem sis_pgem on sis_leer.woonplaats=sis_pgem.woonplaats
+LEFT JOIN sis_stud sis_stud on sis_aanm.idStud=sis_stud.idStud
+LEFT JOIN sis_blok sis_blok on sis_bgrp.c_lokatie=sis_blok.c_lokatie
+LEFT JOIN sis_blfa sis_blfa on sis_stud.idBlfa=sis_blfa.idBlfa
+LEFT JOIN sis_pers sis_pers on sis_bgrp.idPers_mentor1=sis_pers.idPers
+LEFT JOIN sis_pers sis_pers0 on sis_aanm.idPers_mentor1=sis_pers0.idPers
+LEFT JOIN sis_pers sis_pers1 on sis_stud.idPers_coord1=sis_pers1.idPers
+LEFT JOIN sis_gebr sis_gebr on sis_leer.idLeer=sis_gebr.idLeer
+LEFT JOIN sis_oudr AS O ON  sis_leer.idoudr1 = O.idoudr
+WHERE (sis_aanm.dBegin <= getDate()) and
+(sis_aanm.dEinde >= getDate()) and ((sis_aanm.dVertrek >= getDate()) or
+(sis_aanm.dVertrek is null))
+
+UNION
+
+SELECT DISTINCT
+sis_leer.stamnr as STAMNR,
+sis_leer.voorlett as INITIALS,
+sis_leer.roepnaam as FIRSTNAME,
+sis_leer.tussenvoeg as PREFIX,
+sis_leer.achternaam as LASTNAME,
+sis_leer.email as EMAIL,
+sis_leer.geslacht as GENDER,
+sis_leer.geb_datum as BIRTHDATE,
+sis_leer.straat as STREET,
+sis_leer.huisnr as HOUSENR,
+sis_leer.huisnr_tv as HOUSENRSUFIX,
+sis_leer.postcode as POSTALCODE,
+sis_leer.woonplaats as CITY,
+sis_blpe.omschr_k as STUDYPERIOD,
+sis_bgrp.groep as CLASS,
+sis_prof.c_profiel as PROFILECODE,
+sis_prof.omschr as PROFILEDESC,
+sis_stud.studie as STUDY,
+sis_blok.omschr as LOCATION,
+sis_blfa.leerjaar as STUDYYEAR,
+sis_pers.doc_code as PMENTORCODE,
+sis_pers.naam_vol as PMENTORNAME,
+sis_pers0.doc_code as CMENTORCODE,
+sis_pers0.naam_vol as CMENTORNAME,
+sis_pers1.doc_code as ADJUNCSECTOR,
+sis_aanm.datumaanm as Aanmelddatum,
+sis_gebr.login_naam as sis_gebr__login_naam,
+'Volgend' AS Schooljaar,
+O.email,
+sis_leer.gsm
+FROM sis_leer sis_leer
+INNER JOIN sis_aanm sis_aanm on sis_leer.stamnr=sis_aanm.stamnr
+LEFT JOIN sis_bgrp sis_bgrp on sis_aanm.idBgrp=sis_bgrp.idBgrp
+LEFT JOIN sis_prof sis_prof on sis_aanm.c_profiel=sis_prof.c_profiel AND sis_aanm.idStud=sis_prof.idStud
+LEFT JOIN sis_allp sis_allp on sis_aanm.stamnr=sis_allp.stamnr AND sis_aanm.lesperiode=sis_allp.lesperiode
+LEFT JOIN sis_blpe sis_blpe on sis_allp.lesperiode=sis_blpe.lesperiode
+LEFT JOIN sis_bnat sis_bnat on sis_leer.woonland=sis_bnat.idBnat
+LEFT JOIN sis_pgem sis_pgem on sis_leer.woonplaats=sis_pgem.woonplaats
+LEFT JOIN sis_stud sis_stud on sis_aanm.idStud=sis_stud.idStud
+LEFT JOIN sis_blok sis_blok on sis_bgrp.c_lokatie=sis_blok.c_lokatie
+LEFT JOIN sis_blfa sis_blfa on sis_stud.idBlfa=sis_blfa.idBlfa
+LEFT JOIN sis_pers sis_pers on sis_bgrp.idPers_mentor1=sis_pers.idPers
+LEFT JOIN sis_pers sis_pers0 on sis_aanm.idPers_mentor1=sis_pers0.idPers
+LEFT JOIN sis_pers sis_pers1 on sis_stud.idPers_coord1=sis_pers1.idPers
+LEFT JOIN sis_gebr sis_gebr on sis_leer.idLeer=sis_gebr.idLeer
+LEFT JOIN sis_oudr AS O ON  sis_leer.idoudr1 = O.idoudr
+WHERE (sis_aanm.dBegin >= getDate()) and
+(sis_aanm.dEinde >= getDate()) and ((sis_aanm.dVertrek >= getDate()) or
+(sis_aanm.dVertrek is null))
+AND  sis_leer.stamnr NOT IN (  SELECT DISTINCT
+sis_leer.stamnr as STAMNR
+FROM sis_leer sis_leer
+INNER JOIN sis_aanm sis_aanm on sis_leer.stamnr=sis_aanm.stamnr
+LEFT JOIN sis_bgrp sis_bgrp on sis_aanm.idBgrp=sis_bgrp.idBgrp
+LEFT JOIN sis_prof sis_prof on sis_aanm.c_profiel=sis_prof.c_profiel AND sis_aanm.idStud=sis_prof.idStud
+LEFT JOIN sis_allp sis_allp on sis_aanm.stamnr=sis_allp.stamnr AND sis_aanm.lesperiode=sis_allp.lesperiode
+LEFT JOIN sis_blpe sis_blpe on sis_allp.lesperiode=sis_blpe.lesperiode
+LEFT JOIN sis_bnat sis_bnat on sis_leer.woonland=sis_bnat.idBnat
+LEFT JOIN sis_pgem sis_pgem on sis_leer.woonplaats=sis_pgem.woonplaats
+LEFT JOIN sis_stud sis_stud on sis_aanm.idStud=sis_stud.idStud
+LEFT JOIN sis_blok sis_blok on sis_bgrp.c_lokatie=sis_blok.c_lokatie
+LEFT JOIN sis_blfa sis_blfa on sis_stud.idBlfa=sis_blfa.idBlfa
+LEFT JOIN sis_pers sis_pers on sis_bgrp.idPers_mentor1=sis_pers.idPers
+LEFT JOIN sis_pers sis_pers0 on sis_aanm.idPers_mentor1=sis_pers0.idPers
+LEFT JOIN sis_pers sis_pers1 on sis_stud.idPers_coord1=sis_pers1.idPers
+LEFT JOIN sis_gebr sis_gebr on sis_leer.idLeer=sis_gebr.idLeer
+WHERE (sis_aanm.dBegin <= getDate()) and
+(sis_aanm.dEinde >= getDate()) and ((sis_aanm.dVertrek >= getDate()) or
+(sis_aanm.dVertrek is null)))
