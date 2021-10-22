@@ -13,7 +13,7 @@
 - [Getting help](Getting-help)
 
 ## Introduction
-The HelloID-Conn-Prov-Source-magister is used to retrieve students from Magster.
+The HelloID-Conn-Prov-Source-magister-students is used to retrieve students from Magister.
 
 ## Getting started
 
