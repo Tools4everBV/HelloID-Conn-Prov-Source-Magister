@@ -48,8 +48,8 @@ $csv | ForEach-Object {
     # Create a 'contract' from the study enrollment data
     $contract = [PSCustomObject]@{
         ExternalId         = $_.Stamnr
-        StartDate          = "$studyStartYear/09/01"
-        EndDate            = "$studyEndYear/08/31"
+        StartDate          = "$studyStartYear/08/01"
+        EndDate            = "$studyEndYear/07/31"
         Class              = $_.CLASS
         ProfileCode        = $_.PROFILECODE
         ProfileDescription = $_.PROFILEDESC
