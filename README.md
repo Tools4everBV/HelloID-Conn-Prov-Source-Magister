@@ -46,7 +46,7 @@ The following settings are required to connect to the API.
 
 
 ### Remarks
- - Execute on-premises
+ - Execute on-premises because of IP whitelisting on Magister site
  - The magsiter application manager must create an layout named "tools4ever-leerlingen-actief"
  - The magister application manager must import the contents off the layout "tools4ever-leerlingen-actief" into decibel
  - The username must be authorized for the layout "tools4ever-leerlingen-actief"
