@@ -41,10 +41,11 @@ The following settings are required to connect to the API.
 
 | Setting     | Description |
 | ------------ | ----------- |
-| username     | The username   |
+| Username     | The username   |
 | Password   | The password  |
 | BaseUrl    |    The URL to the Magister environment. Example: https://tools4ever.swp.nl:8800
-| layout | Name of the list in Decibel to export
+| Layout | Name of the list in Decibel to export
+| isDebug | Debug toggle
 
 
 
