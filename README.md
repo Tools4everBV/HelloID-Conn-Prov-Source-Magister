@@ -6,6 +6,10 @@
 
 <br />
 
+<p align="center">
+  <img src="assets/logo.png">
+</p>
+
 ## Table of contents
 
 - [Introduction](#Introduction)
