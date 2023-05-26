@@ -63,7 +63,6 @@ try {
         $result = Invoke-WebRequest -Method GET -Uri $uri -UseBasicParsing
         $data = $result.content
 
-        #$persons = [System.Collections.ArrayList]::new()
         $persons = ConvertFrom-Csv $data -Delimiter ";"    
 
         Write-Information "Succesfully queried Persons. Result count: $($persons.count)"
@@ -108,11 +107,13 @@ try {
         $persons | Add-Member -MemberType NoteProperty -Name "ExternalId" -Value $null -Force
         $persons | Add-Member -MemberType NoteProperty -Name "DisplayName" -Value $null -Force
         $persons | Add-Member -MemberType NoteProperty -Name "NamingConvention" -Value $null -Force
+        $persons | Add-Member -MemberType NoteProperty -Name "PersonType" -Value $null -Force
         $persons | Add-Member -MemberType NoteProperty -Name "Contracts" -Value $null -Force
         $persons | ForEach-Object {
                 $_.ExternalId = $_.Stamnr
                 $_.DisplayName = "$($_.FIRSTNAME) $($_.PREFIX) $($_.LASTNAME) ($($_.Stamnr))" -replace "  ", " "
                 $_.NamingConvention = "B"
+                $_.PersonType = "Leerling"
 
                 $contracts = [System.Collections.ArrayList]::new()
                 $personEmployments = $employments[$_.Stamnr]
