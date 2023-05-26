@@ -6,6 +6,10 @@
 
 <br />
 
+<p align="center">
+  <img src="assets/logo.png">
+</p>
+
 ## Table of contents
 
 - [Introduction](#Introduction)
@@ -37,10 +41,11 @@ The following settings are required to connect to the API.
 
 | Setting     | Description |
 | ------------ | ----------- |
-| username     | The username   |
+| Username     | The username   |
 | Password   | The password  |
 | BaseUrl    |    The URL to the Magister environment. Example: https://tools4ever.swp.nl:8800
-| layout | Name of the list in Decibel to export
+| Layout | Name of the list in Decibel to export
+| isDebug | Debug toggle
 
 
 
@@ -48,8 +53,8 @@ The following settings are required to connect to the API.
 ### Remarks
  - Execute on-premises because of IP whitelisting on Magister site
  - The magsiter application manager must create an layout named "tools4ever-leerlingen-actief"
- - The magister application manager must import the contents off the layout "tools4ever-leerlingen-actief" into decibel
  - The username must be authorized for the layout "tools4ever-leerlingen-actief"
+ - The magister application manager must import the contents off the layout "tools4ever-leerlingen-actief" into decibel
  - documentation can be found at https://<tenant>.swp.nl:8800/doc?
 
 

@@ -1,7 +1,0 @@
-educationalEmailParent
-educationalGroup
-educationalPeriod
-educationalProfile
-educationalStudy
-educationalYear
-personType
